@@ -50,11 +50,43 @@
       width: 15px;
     }
 
-    span {
+    @mixin one_item_color($selector, $bg_color, $border_color_tl, $border_color_br) {
+      &.#{$selector} {
+        background-color: $bg_color;
+        border-left: 2px solid $border_color_tl;
+        border-top: 2px solid $border_color_tl;
+        border-right: 2px solid $border_color_br;
+        border-bottom: 2px solid $border_color_br;
+      }
+    }
+    @mixin legend_colors($bg_colors, $border_colors_tl, $border_colors_br) {
+      @include one_item_color('less-1-day', nth($bg_colors, 1), nth($border_colors_tl, 1), nth($border_colors_br, 1))
+      @include one_item_color('less-5-days', nth($bg_colors, 2), nth($border_colors_tl, 2), nth($border_colors_br, 2))
+      @include one_item_color('less-14-days', nth($bg_colors, 3), nth($border_colors_tl, 3), nth($border_colors_br, 3))
+      @include one_item_color('more-14-days', nth($bg_colors, 4), nth($border_colors_tl, 4), nth($border_colors_br, 4))
+    }
+
+    @mixin legend_bg_colors($colors) {
+      &.less-1-day { background-color: nth($colors, 1) !important; }
+      &.less-5-days { background-color: nth($colors, 2) !important; }
+      &.less-14-days { background-color: nth($colors, 3) !important; }
+      &.more-14-days { background-color: nth($colors, 4) !important; }
+    }
+
+    .button {
       display: inline-block;
       padding: 5px;
       text-align: center;
       width: 70px;
+      background-color: white;
+      @include legend_colors((#FF0000, #FFA500, #FFFF00, #808080), (#FF3030, #FFD830, #FFFF30, #A0A0A0), (#AA0000, #AA5000, #AAAA00, #202020))
+      &:hover {
+        cursor: pointer;
+        @include legend_bg_colors((#F02020, #F0A510, #E0E020, #909090))
+      }
+      &.pressed {
+        @include legend_colors((#FF0000, #FFA500, #FFFF00, #808080), (#AA0000, #AA5000, #AAAA00, #202020), (#FF3030, #FFD830, #FFFF30, #A0A0A0))
+      }
     }
 
     .buildings-legend {
