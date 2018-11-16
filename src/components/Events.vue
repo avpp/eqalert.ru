@@ -1,6 +1,7 @@
 <template>
   <div class="events">
     <CountersHeader
+      :events="events"
       :count="events.length"
       :startDate="startDate"
       :endDate="endDate" />

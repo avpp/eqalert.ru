@@ -6,16 +6,21 @@
         <span v-if="!$root.onMobile">Снять ограничения данных</span>
       </router-link>
     </b-col>
-    <b-col cols="10" md="8" class="text-center text-md-left">
+    <b-col cols="8" md="4" class="text-center text-md-left">
       Загружено <span class="count">{{ count }}</span> событий
       <span v-if="count && !$root.onMobile">({{ startDate }} — {{ endDate }})</span>
+    </b-col>
+    <b-col cols="2" md="4" class="text-center text-md-right">
+      <ShowOnMapButton :events="events" />
     </b-col>
   </b-row>
 </template>
 
 <script>
+  import ShowOnMapButton from '@/components/ShowOnMapButton.vue'
   export default {
-    props: ['count', 'startDate', 'endDate']
+    components: { ShowOnMapButton },
+    props: ['count', 'startDate', 'endDate', 'events']
   }
 </script>
 
