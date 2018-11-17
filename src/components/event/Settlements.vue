@@ -14,20 +14,19 @@
       <template slot="msk64" slot-scope="data">
         <b-badge :variant="data.value">{{ data.value }}</b-badge>
       </template>
-      <template slot="description" slot-scope="data">
-        <img src="../../assets/img/question-circle.png" alt="Описание" v-b-popover.hover.auto="data.value" />
-      </template>
+      <DescriptionButton slot="description" slot-scope="data" :value="data.value"/>
     </b-table>
   </div>
 </template>
 
 <script>
   import Spinner from 'vue-simple-spinner'
+  import DescriptionButton from '@/components/DescriptionButton.vue'
   import { convertMsk64 } from '@/map_functions.js'
   import { round } from '@/helpers/math.js'
 
   export default {
-    components: { Spinner },
+    components: { Spinner, DescriptionButton },
     props: ['event'],
     data() {
       return {

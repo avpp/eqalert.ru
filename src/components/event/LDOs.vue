@@ -10,18 +10,17 @@
       :items="items"
       v-if="!spinner">
       <template slot="index" slot-scope="data">{{ data.index + 1 }}</template>
-      <template slot="description" slot-scope="data">
-        <img src="../../assets/img/question-circle.png" alt="Описание" v-b-popover.hover.auto="data.value" />
-      </template>
+      <DescriptionButton slot="description" slot-scope="data" :value="data.value"/>
     </b-table>
   </div>
 </template>
 
 <script>
+import DescriptionButton from '@/components/DescriptionButton.vue'
 import Spinner from 'vue-simple-spinner'
 
 export default {
-  components: { Spinner },
+  components: { Spinner, DescriptionButton },
   props: ['event'],
   data() {
     return {
