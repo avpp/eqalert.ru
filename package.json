@@ -31,7 +31,10 @@
     "vue-toasted": "^1.1.24",
     "vue-yandex-metrika": "^1.6.1",
     "vuex": "^3.0.1",
-    "vuex-persistedstate": "^2.0.0"
+    "vuex-persistedstate": "^2.0.0",
+    "jszip": "^3.1.5",
+    "xlsx": "^0.14.1",
+    "file-saver": "^2.0.0"
   },
   "devDependencies": {
     "@vue/test-utils": "^1.0.0-beta.16",
